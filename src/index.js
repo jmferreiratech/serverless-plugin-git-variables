@@ -46,10 +46,6 @@ export default class ServerlessGitVariables {
       }
     }
 
-    // Kick this off optimistically on construction, and then also hook it when necessary
-    // Once resolved once, the call is a very fast
-    this.exportGitVariables()
-
     this.hooks = {
       'before:print:print': async() => this.exportGitVariables(),
       'after:package:initialize': async() => this.exportGitVariables(),
